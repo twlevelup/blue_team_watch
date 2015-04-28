@@ -39,14 +39,18 @@ describe('The Home Page', function() {
 
   describe('rendering', function () {
 
-    it('should produce the correct HTML', function () {
-      homePage.render();
-      expect(homePage.el.innerHTML).toContain('<div>Hello, World!</div>');
-    });
+    // it('should render the date', function () {
+    //   homePage.render();
+    //   expect(homePage.el.innerHTML).toContain('<h4>TUE 02 FEB</h4>');
+    // });
 
     it('returns the view object', function() {
       expect(homePage.render()).toEqual(homePage);
     });
+
+    // it('should render the date view', function() {
+    //   expect()
+    // });
 
   });
 
