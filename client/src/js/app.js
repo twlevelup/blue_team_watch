@@ -39,6 +39,8 @@ var App = {
       App.router.currentView.trigger('face');
     });
 
+
+
     Backbone.history.start();
 
   }

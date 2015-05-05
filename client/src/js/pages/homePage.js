@@ -14,6 +14,20 @@ var homeScreen = PageView.extend({
     bottom: 'scrollDown'
   },
 
+  showCurrentTime: function() {
+    var date = new Date(),
+    minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+    var currentTime = date.getHours() + ':' + minutes;
+    var self = this;
+    this.$('#time .time-interface').html(currentTime);
+    setInterval(function() {
+      var date = new Date(),
+      minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+      currentTime = date.getHours() + ':' + minutes;
+      self.$('#time .time-interface').html(currentTime);
+    }, 1000);
+  },
+
   goToContacts: function() {
     global.App.navigate('contacts', true);
   },
@@ -29,6 +43,8 @@ var homeScreen = PageView.extend({
   render: function() {
 
     this.$el.html(this.template());
+
+    this.showCurrentTime();
 
     return this;
 
