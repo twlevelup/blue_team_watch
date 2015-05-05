@@ -48,6 +48,17 @@ describe('The Home Page', function() {
       expect(homePage.render()).toEqual(homePage);
     });
 
+    describe('battery', function() {
+
+      it('should display the battery as 100%', function() {
+          homePage.render();
+          expect(homePage.$("#battery").html()).toContain('<p>100%</p>');
+      });
+
+    });
+
   });
+
+
 
 });
