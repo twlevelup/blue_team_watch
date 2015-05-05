@@ -37,21 +37,44 @@ describe('The Home Page', function() {
 
   });
 
-  describe('rendering', function () {
+  describe('formatting', function() {
 
-    // it('should render the date', function () {
-    //   homePage.render();
-    //   expect(homePage.el.innerHTML).toContain('<h4>TUE 02 FEB</h4>');
-    // });
+    it('should 2nd of Feburary have correct format', function() {
+
+      var date = new Date('02/02/2015');
+      expect(homePage.formatDate(date)).toEqual('Mon 02 Feb');
+
+    });
+
+    it('should 3rd of March have correct format', function() {
+
+      var date = new Date('03/03/2016');
+      expect(homePage.formatDate(date)).toEqual('Thu 03 Mar');
+
+    });
+
+  });
+
+  describe('rendering', function () {
 
     it('returns the view object', function() {
       expect(homePage.render()).toEqual(homePage);
     });
 
-    // it('should render the date view', function() {
-    //   expect()
-    // });
+    describe('date', function() {
+
+
+      it('should render the date', function() {
+        var expectedFormattedDate = homePage.formatDate(new Date("02/02/2015"));
+
+        homePage.render();
+
+        expect(homePage.$('#date-container').html()).toEqual("<p>" + expectedFormattedDate + "</p>");
+      });
+
+    });
 
   });
+
 
 });
