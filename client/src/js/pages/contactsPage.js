@@ -1,10 +1,5 @@
 'use strict';
 
-var Backbone = require('backbone'),
- $ = require('jquery');
-
-Backbone.$ = $;
-
 var PageView = require('../framework/page');
 
 var ContactsCollection = require('../collections/contacts'),
@@ -24,15 +19,13 @@ var ContactsView = PageView.extend({
 
   initialize: function() {
     this.contactsCollection = new ContactsCollection();
-    this.loadContacts();
-  },
-
-  loadContacts: function() {
-    this.contactsCollection.push([
-      {name: 'Adam', phoneNumber: '0431 111 111'},
-      {name: 'Sam', phoneNumber: '0431 222 222'},
-      {name: 'Shaheedha', phoneNumber: '0431 333 333'}
-    ]);
+    var self = this;
+    this.contactsCollection.fetch({
+      reset: true,
+      success: function() {
+        self.render();
+      }
+    });
   },
 
   screenClickExample: function() {
