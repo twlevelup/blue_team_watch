@@ -35,17 +35,30 @@ describe('The Home Page', function() {
 
     });
 
+
   });
 
-  describe('rendering', function () {
 
-    it('should produce the correct HTML', function () {
+
+  describe('render', function () {
+
+    it('should dispaly the time', function () {
       homePage.render();
-      expect(homePage.el.innerHTML).toContain('<div>Hello, World!</div>');
+      var timeElement = homePage.$el.find('.time-interface').text();
+      expect(timeElement).toMatch(/\d+:\d+/);
     });
 
     it('returns the view object', function() {
       expect(homePage.render()).toEqual(homePage);
+    });
+
+    describe('battery', function() {
+
+      it('should display the battery as 100%', function() {
+          homePage.render();
+          expect(homePage.$("#battery").html()).toContain('<p>100%</p>');
+      });
+
     });
 
   });
