@@ -65,7 +65,7 @@ describe('The Home Page', function() {
 
 
       it('should render the date', function() {
-        var expectedFormattedDate = homePage.formatDate(new Date("02/02/2015"));
+        var expectedFormattedDate = homePage.formatDate(new Date());
 
         homePage.render();
 

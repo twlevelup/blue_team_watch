@@ -29,9 +29,8 @@ var homeScreen = PageView.extend({
   render: function() {
 
     this.$el.html(this.template());
-    // variable containing date should be placed in below.
-    this.$('#date-container').append('<p>formatedatenow</p>');
-    // this.formatDate()
+    var date = this.formatDate(new Date());
+    this.$('#date-container').append('<p>' + date + '</p>');
     return this;
 
   },
