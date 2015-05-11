@@ -51,6 +51,9 @@ describe('The Home Page', function() {
 
       var date = new Date('03/03/2016');
       expect(homePage.formatDate(date)).toEqual('Thu 03 Mar');
+    });
+
+  });
 
 
   describe('render', function () {
