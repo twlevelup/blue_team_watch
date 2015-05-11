@@ -36,7 +36,7 @@ describe('The Main Menu Page', function() {
 
     it('should contain the events list option', function () {
       mainMenuPage.render();
-      expect(mainMenuPage.el.innerHTML).toContain('<li>Events</li>');
+      expect(mainMenuPage.el.innerHTML).toContain('<li class="active">Events</li>');
     });
 
 

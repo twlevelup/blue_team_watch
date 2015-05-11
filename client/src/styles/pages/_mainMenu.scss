@@ -5,10 +5,10 @@ ul#mainMenu {
     list-style-type: none;
     padding: 10px;
 
-    .active {
+    &.active {
       background: #000;
     }
 
   }
-  
+
 }
