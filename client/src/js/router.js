@@ -8,8 +8,10 @@ var Router = require('./framework/router.js'),
   contactsPage = new ContactsPage(),
   categoriesPage = new CategoriesPage(),
   MainMenuPage = require('./pages/mainMenuPage'),
+  EventsPage = require('./pages/eventsPage'),
   homePage = new HomePage(),
-  mainMenuPage = new MainMenuPage();
+  mainMenuPage = new MainMenuPage(),
+  eventsPage = new EventsPage();
 
 
 var AppRouter = Router.extend({
@@ -18,7 +20,8 @@ var AppRouter = Router.extend({
     '': 'home',
     contacts: 'contacts',
     categories: 'categories',
-    mainMenu: 'mainMenu'
+    mainMenu: 'mainMenu',
+    eventsPage: 'eventsPage'
   },
 
   home: function() {
@@ -32,10 +35,15 @@ var AppRouter = Router.extend({
   categories: function() {
     this.renderView(categoriesPage);
   },
-  
+
   mainMenu: function() {
     this.renderView(mainMenuPage);
   },
+
+  eventsPage: function() {
+    this.renderView(eventsPage);
+  }
+
 });
 
 module.exports = AppRouter;
