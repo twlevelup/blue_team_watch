@@ -20,12 +20,6 @@ var homeScreen = PageView.extend({
     var currentTime = date.getHours() + ':' + minutes;
     var self = this;
     this.$('#time .time-interface').html(currentTime);
-    setInterval(function() {
-      var date = new Date(),
-      minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
-      currentTime = date.getHours() + ':' + minutes;
-      self.$('#time .time-interface').html(currentTime);
-    }, 1000);
   },
 
   goToContacts: function() {
@@ -41,11 +35,17 @@ var homeScreen = PageView.extend({
   },
 
   render: function() {
-
+    var self = this;
     this.$el.html(this.template());
     var date = this.formatDate(new Date());
     this.$('#date-container').append('<p>' + date + '</p>');
     this.showCurrentTime();
+
+    (function updateCurrentTime() {
+      self.showCurrentTime();
+      setTimeout(updateCurrentTime, 1000);
+    })();
+
     return this;
 
   },
