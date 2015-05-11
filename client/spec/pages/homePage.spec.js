@@ -35,6 +35,7 @@ describe('The Home Page', function() {
 
     });
 
+
   });
 
   describe('formatting', function() {
@@ -51,6 +52,13 @@ describe('The Home Page', function() {
       var date = new Date('03/03/2016');
       expect(homePage.formatDate(date)).toEqual('Thu 03 Mar');
 
+
+  describe('render', function () {
+
+    it('should display the time', function () {
+      homePage.render();
+      var timeElement = homePage.$el.find('.time-interface').text();
+      expect(timeElement).toMatch(/\d+:\d+/);
     });
 
   });
@@ -70,6 +78,15 @@ describe('The Home Page', function() {
         homePage.render();
 
         expect(homePage.$('#date-container').html()).toEqual("<p>" + expectedFormattedDate + "</p>");
+
+      });
+    });
+
+    describe('battery', function() {
+
+      it('should display the battery as 100%', function() {
+          homePage.render();
+          expect(homePage.$("#battery").html()).toContain('<p>100%</p>');
       });
 
     });
