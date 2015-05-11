@@ -34,6 +34,13 @@ describe('The Main Menu Page', function() {
       expect(mainMenuPage.el.innerHTML).toContain('<h1>Main Menu</h1>');
     });
 
+    it('should contain the events list option', function () {
+      mainMenuPage.render();
+      expect(mainMenuPage.el.innerHTML).toContain('<li>Events</li>');
+    });
+
+
+
     it('returns the view object', function() {
       expect(mainMenuPage.render()).toEqual(mainMenuPage);
     });
