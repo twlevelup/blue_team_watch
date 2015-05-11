@@ -4,7 +4,8 @@ var AppRouter = require('../src/js/router.js'),
   PageView = require('../src/js/framework/page'),
   HomePage = require('../src/js/pages/homePage'),
   ContactPage = require('../src/js/pages/contactsPage'),
-  CategoriesPage = require('../src/js/pages/categoriesPage');
+  CategoriesPage = require('../src/js/pages/categoriesPage'),
+  MainMenuPage = require('../src/js/pages/mainMenuPage');
 
 describe('Application Router', function() {
 
@@ -25,11 +26,11 @@ describe('Application Router', function() {
       });
     });
 
-    describe('#contacts', function() {
-      it('should load the contacts screen', function() {
-        router.contacts();
-        var isContactPage = router.renderView.calls.argsFor(0)[0] instanceof ContactPage;
-        expect(isContactPage).toBeTruthy();
+    describe('#mainMenu', function() {
+      it('should load the main menu screen', function() {
+        router.mainMenu();
+        var isMainMenuPage = router.renderView.calls.argsFor(0)[0] instanceof MainMenuPage;
+        expect(isMainMenuPage).toBeTruthy();
       });
     });
 

@@ -1,0 +1,14 @@
+ul#mainMenu {
+  padding-left: 0;
+
+  li {
+    list-style-type: none;
+    padding: 10px;
+
+    &.active {
+      background: #000;
+    }
+
+  }
+
+}

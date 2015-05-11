@@ -26,7 +26,7 @@ describe('The Home Page', function() {
         spyOn(global.App, 'navigate');
       });
 
-      it('should take the user to the contacts page', function () {
+      it('should take the user to the main menu', function () {
 
         homePage.trigger('right');
 
@@ -38,18 +38,51 @@ describe('The Home Page', function() {
 
   });
 
+  describe('formatting', function() {
+
+    it('should 2nd of Feburary have correct format', function() {
+
+      var date = new Date('02/02/2015');
+      expect(homePage.formatDate(date)).toEqual('Mon 02 Feb');
+
+    });
+
+    it('should 3rd of March have correct format', function() {
+
+      var date = new Date('03/03/2016');
+      expect(homePage.formatDate(date)).toEqual('Thu 03 Mar');
+    });
+
+  });
 
 
   describe('render', function () {
 
-    it('should dispaly the time', function () {
+    it('should display the time', function () {
       homePage.render();
       var timeElement = homePage.$el.find('.time-interface').text();
       expect(timeElement).toMatch(/\d+:\d+/);
     });
 
+  });
+
+  describe('rendering', function () {
+
     it('returns the view object', function() {
       expect(homePage.render()).toEqual(homePage);
+    });
+
+    describe('date', function() {
+
+
+      it('should render the date', function() {
+        var expectedFormattedDate = homePage.formatDate(new Date());
+
+        homePage.render();
+
+        expect(homePage.$('#date-container').html()).toEqual("<p>" + expectedFormattedDate + "</p>");
+
+      });
     });
 
     describe('battery', function() {
@@ -62,5 +95,6 @@ describe('The Home Page', function() {
     });
 
   });
+
 
 });

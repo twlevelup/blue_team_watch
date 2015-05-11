@@ -6,14 +6,19 @@ var Router = require('./framework/router.js'),
   CategoriesPage = require('./pages/categoriesPage'),
   homePage = new HomePage(),
   contactsPage = new ContactsPage(),
-  categoriesPage = new CategoriesPage();
+  categoriesPage = new CategoriesPage(),
+  MainMenuPage = require('./pages/mainMenuPage'),
+  homePage = new HomePage(),
+  mainMenuPage = new MainMenuPage();
+
 
 var AppRouter = Router.extend({
 
   routes: {
     '': 'home',
     contacts: 'contacts',
-    categories: 'categories'
+    categories: 'categories',
+    mainMenu: 'mainMenu'
   },
 
   home: function() {
@@ -27,7 +32,10 @@ var AppRouter = Router.extend({
   categories: function() {
     this.renderView(categoriesPage);
   },
-
+  
+  mainMenu: function() {
+    this.renderView(mainMenuPage);
+  },
 });
 
 module.exports = AppRouter;
