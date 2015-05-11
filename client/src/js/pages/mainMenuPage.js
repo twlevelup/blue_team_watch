@@ -9,7 +9,8 @@ var MainMenuView = PageView.extend({
   template: require('../../templates/pages/mainMenu.hbs'),
 
   buttonEvents: {
-    left: 'goToHomePage'
+    left: 'goToHomePage',
+    right: 'goToCategoriesPage'
   },
 
   initialize: function() {
@@ -18,6 +19,10 @@ var MainMenuView = PageView.extend({
 
   goToHomePage: function() {
     global.App.router.navigate('', true);
+  },
+
+  goToCategoriesPage: function() {
+    global.App.router.navigate('categories', true);
   },
 
   render: function() {

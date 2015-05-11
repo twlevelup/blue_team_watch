@@ -25,6 +25,17 @@ describe('The Main Menu Page', function() {
       });
 
     });
+
+    describe('right', function () {
+      it('should take the user to the categories page', function () {
+        spyOn(mainMenuPage, 'goToCategoriesPage');
+        mainMenuPage.setButtonEvents();
+        mainMenuPage.trigger('right');
+        expect(mainMenuPage.goToCategoriesPage).toHaveBeenCalled();
+      });
+
+    });
+
   });
 
   describe('rendering', function () {
@@ -38,8 +49,6 @@ describe('The Main Menu Page', function() {
       mainMenuPage.render();
       expect(mainMenuPage.el.innerHTML).toContain('<li class="active">Events</li>');
     });
-
-
 
     it('returns the view object', function() {
       expect(mainMenuPage.render()).toEqual(mainMenuPage);

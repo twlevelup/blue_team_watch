@@ -14,6 +14,19 @@ describe('The Categories Page', function() {
     categoriesPage = new CategoriesPage();
   });
 
+  describe('button events', function () {
+
+    describe('left', function () {
+      it('should take the user to the main menu page', function () {
+        spyOn(categoriesPage, 'goToMainMenuPage');
+        categoriesPage.setButtonEvents();
+        categoriesPage.trigger('left');
+        expect(categoriesPage.goToMainMenuPage).toHaveBeenCalled();
+      });
+
+    });
+
+  });
 
   describe('rendering', function () {
 
