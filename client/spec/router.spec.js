@@ -3,7 +3,8 @@
 var AppRouter = require('../src/js/router.js'),
   PageView = require('../src/js/framework/page'),
   HomePage = require('../src/js/pages/homePage'),
-  ContactPage = require('../src/js/pages/contactsPage');
+  ContactPage = require('../src/js/pages/contactsPage'),
+  CategoriesPage = require('../src/js/pages/categoriesPage');
 
 describe('Application Router', function() {
 
@@ -29,6 +30,14 @@ describe('Application Router', function() {
         router.contacts();
         var isContactPage = router.renderView.calls.argsFor(0)[0] instanceof ContactPage;
         expect(isContactPage).toBeTruthy();
+      });
+    });
+
+    describe('#categories', function() {
+      it('should load the categories screen', function() {
+        router.categories();
+        var isCategoriesPage = router.renderView.calls.argsFor(0)[0] instanceof CategoriesPage;
+        expect(isCategoriesPage).toBeTruthy();
       });
     });
 
