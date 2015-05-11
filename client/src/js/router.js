@@ -2,23 +2,23 @@
 
 var Router = require('./framework/router.js'),
   HomePage = require('./pages/homePage'),
-  ContactsPage = require('./pages/contactsPage'),
+  MainMenuPage = require('./pages/mainMenuPage'),
   homePage = new HomePage(),
-  contactsPage = new ContactsPage();
+  mainMenuPage = new MainMenuPage();
 
 var AppRouter = Router.extend({
 
   routes: {
     '': 'home',
-    contacts: 'contacts'
+    mainMenu: 'mainMenu'
   },
 
   home: function() {
     this.renderView(homePage);
   },
 
-  contacts: function() {
-    this.renderView(contactsPage);
+  mainMenu: function() {
+    this.renderView(mainMenuPage);
   }
 
 });

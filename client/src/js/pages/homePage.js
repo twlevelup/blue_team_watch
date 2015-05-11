@@ -9,7 +9,7 @@ var homeScreen = PageView.extend({
   template: require('../../templates/pages/home.hbs'),
 
   buttonEvents: {
-    right: 'goToContacts',
+    right: 'goToMainMenu',
     top: 'scrollUp',
     bottom: 'scrollDown'
   },
@@ -22,8 +22,8 @@ var homeScreen = PageView.extend({
     this.$('#time .time-interface').html(currentTime);
   },
 
-  goToContacts: function() {
-    global.App.navigate('contacts', true);
+  goToMainMenu: function() {
+    global.App.navigate('mainMenu', true);
   },
 
   scrollUp: function() {

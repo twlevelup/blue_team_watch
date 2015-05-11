@@ -26,7 +26,7 @@ describe('The Home Page', function() {
         spyOn(global.App, 'navigate');
       });
 
-      it('should take the user to the contacts page', function () {
+      it('should take the user to the main menu', function () {
 
         homePage.trigger('right');
 
