@@ -23,6 +23,12 @@ var EventsView = PageView.extend({
     this.$el.html(this.template());
 
     return this;
+  },
+
+  seedEvents: function() {
+    this.eventsCollection.push([
+      // array of event objects here
+    ]);
   }
 
 });

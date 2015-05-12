@@ -14,6 +14,16 @@ describe('The Events Page', function() {
     eventsPage = new EventsPage();
   });
 
+  // Collection needs to be defined within App
+
+  // describe('events data', function () {
+
+  //   it('should have a events collection', function () {
+  //     expect(eventsPage.eventsCollection).toBeDefined();
+  //   });
+
+  // });
+
   describe('rendering', function () {
 
     describe('events should be in order', function() {
