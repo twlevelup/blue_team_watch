@@ -32,7 +32,7 @@ describe('The Categories Page', function() {
 
     it('should display category title', function () {
       categoriesPage.render();
-      expect(categoriesPage.el.innerHTML).toContain('<h1>Event Categories</h1>');
+      expect(categoriesPage.el.innerHTML).toContain('>Event Categories</h1>');
     });
 
     it('returns the category view object', function() {
