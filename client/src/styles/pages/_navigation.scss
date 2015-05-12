@@ -1,0 +1,26 @@
+#mainMenu {
+  > .header {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    background: $foreground-text;
+    color: #fff;
+    font-family: Oswald;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+  }
+  > ul {
+    margin-top: 5px;
+    padding-left: 0;
+    li {
+      list-style-type: none;
+      padding: 10px;
+      &.active {
+        background: $cursor-bg;
+        color: $cursor-fg;
+      }
+    }
+  }
+}
