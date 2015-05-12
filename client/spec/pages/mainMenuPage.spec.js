@@ -42,7 +42,7 @@ describe('The Main Menu Page', function() {
 
     it('should produce the correct HTML', function () {
       mainMenuPage.render();
-      expect(mainMenuPage.el.innerHTML).toContain('<h1>Main Menu</h1>');
+      expect(mainMenuPage.el.innerHTML).toContain('>Main Menu</h1>');
     });
 
     it('should contain the events list option', function () {
