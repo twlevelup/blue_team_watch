@@ -5,6 +5,9 @@
 *.iml
 .idea/
 *.ipr
+*.swp
+*.swo
+*~
 *.iws
 .idea_modules/
 
