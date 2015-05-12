@@ -1,4 +1,6 @@
 #time {
+  margin-top: 23px;
+
   .time-interface {
     text-align: center;
     font-size: 4.3em;
@@ -7,10 +9,19 @@
 }
 
 #battery {
+  top: -5px;
+  right: 5px;
   text-align: right;
-  padding-right: 20px;
+  font-size: 0.8em;
+  position: absolute;
+  font-family: helvetica, sans-serif;
 }
 
 #date-container {
   text-align: center;
+  font-family: 'Oswald', sans-serif;
+
+  > p {
+    margin: 0;
+  }
 }
