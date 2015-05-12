@@ -1,6 +1,7 @@
 'use strict';
 
-var PageView = require('../framework/page');
+var PageView = require('../framework/page'),
+  EventsCollection = require('../collections/calendarEvents');
 
 var EventsView = PageView.extend({
 
@@ -16,6 +17,10 @@ var EventsView = PageView.extend({
 
   initialize: function() {
     var self = this;
+    this.eventsCollection = new EventsCollection();
+
+    // Un-comment to add events
+    // this.seedEvents()
   },
 
   render: function() {
@@ -28,6 +33,8 @@ var EventsView = PageView.extend({
   seedEvents: function() {
     this.eventsCollection.push([
       // array of event objects here
+      {name: 'Adam', date: '0431 111 111', location: 'Adam', category: '0431 111 111'},
+      {name: 'Adam2', date: '0431 111 112', location: 'Adam2', category: '0431 111 112'}
     ]);
   }
 

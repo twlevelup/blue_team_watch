@@ -18,9 +18,9 @@ describe('The Events Page', function() {
 
   // describe('events data', function () {
 
-  //   it('should have a events collection', function () {
-  //     expect(eventsPage.eventsCollection).toBeDefined();
-  //   });
+    it('should have a events collection', function () {
+      expect(eventsPage.eventsCollection).toBeDefined();
+    });
 
   // });
 

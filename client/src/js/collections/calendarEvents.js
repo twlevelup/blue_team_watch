@@ -2,7 +2,7 @@ var CalendarEvent = require('../models/calendarEvent');
 var Config = require('../config/config.js');
 
 var CalendarEvents = Backbone.Firebase.Collection.extend({
-  model: Event,
+  model: CalendarEvent,
   url: Config.firebaseUrl + '/CalendarEvents'
 });
 
