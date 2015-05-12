@@ -1,17 +1,13 @@
-.screen{
-  padding-left: 1.5em;
-  font-family: monospace;
-  color: $foreground-text;
-}
-
 #watch-face{
-  overflow: auto;
-  height: 240px;
-  position: absolute;
-  width: 240px;
+  position: relative;
   top: 30px;
-  left: 20px;
+  left: 28px;
   display: block;
+  overflow: auto;
+  width: 240px;
+  height: 240px;
+  color: $foreground-text;
+  font-family: monospace;
 }
 
 #watch{
