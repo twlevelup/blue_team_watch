@@ -22,7 +22,7 @@ var EventsView = PageView.extend({
     this.listenTo(this.eventsCollection, 'change', this.render);
 
     // Uncomment to seed DB
-    this.seedEvents();
+    // this.seedEvents();
   },
 
   render: function() {
