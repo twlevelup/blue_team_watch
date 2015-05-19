@@ -34,17 +34,17 @@ describe('The Event View', function() {
 
     it('should display event date', function () {
       eventView.render();
-      expect(eventView.el.innerHTML).toContain('<span>22/04/2015</span>');
+      expect(eventView.$el.find('span').text()).toContain('22/04/2015');
     });
 
     it('should display event location', function () {
       eventView.render();
-      expect(eventView.el.innerHTML).toContain('<span>Sydney</span>');
+      expect(eventView.$el.find('span').text()).toContain('Sydney');
     });
 
     it('should display event category', function () {
       eventView.render();
-      expect(eventView.el.innerHTML).toContain('<span>sport</span>');
+      expect(eventView.$el.find('span').text()).toContain('sport');
     });
 
   });
