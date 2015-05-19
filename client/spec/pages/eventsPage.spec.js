@@ -48,6 +48,35 @@ describe('The Events Page', function() {
         expect(dateDigits).toEqual(dateDigits.sort());
     });
 
+    it('should display the event category', function() {
+      eventsPage.render();
+      expect(eventsPage.$el.find('#event-category').text()).toEqual('All Categories');
+    });
+
+  });
+
+  describe('events', function() {
+
+    it('should go back to the categories page', function() {
+      spyOn(eventsPage, 'goToCategoriesPage');
+      eventsPage.setButtonEvents();
+      eventsPage.trigger('left');
+      expect(eventsPage.goToCategoriesPage).toHaveBeenCalled();
+    });
+
+    it('should scroll down', function() {
+      spyOn(eventsPage, 'scrollDown');
+      eventsPage.setButtonEvents();
+      eventsPage.trigger('bottom');
+      expect(eventsPage.scrollDown).toHaveBeenCalled();
+    });
+
+    it('should scroll up', function() {
+      spyOn(eventsPage, 'scrollUp');
+      eventsPage.setButtonEvents();
+      eventsPage.trigger('top');
+      expect(eventsPage.scrollUp).toHaveBeenCalled();
+    });
 
 
   });

@@ -23,7 +23,15 @@ describe('The Categories Page', function() {
         categoriesPage.trigger('left');
         expect(categoriesPage.goToMainMenuPage).toHaveBeenCalled();
       });
+    });
 
+    describe('right', function () {
+      it('should take the user to the events page', function () {
+        spyOn(categoriesPage, 'goToEventsPage');
+        categoriesPage.setButtonEvents();
+        categoriesPage.trigger('right');
+        expect(categoriesPage.goToEventsPage).toHaveBeenCalled();
+      });
     });
 
   });

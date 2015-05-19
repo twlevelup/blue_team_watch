@@ -1,5 +1,4 @@
-.navigation-menu {
-  > .header {
+.navigation-list-header {
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 10px;
@@ -10,8 +9,9 @@
     font-family: Oswald;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-  }
-  > ul {
+}
+
+ul.navigation-list {
     margin-top: 5px;
     padding-left: 0;
     li {
@@ -22,5 +22,4 @@
         color: $cursor-fg;
       }
     }
-  }
 }

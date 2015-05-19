@@ -2,7 +2,7 @@
 
 var EventView = Backbone.View.extend({
 
-  tagName: 'div',
+  tagName: 'li',
 
   template: require('../../templates/views/event.hbs'),
 

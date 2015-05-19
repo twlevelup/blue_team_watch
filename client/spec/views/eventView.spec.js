@@ -42,11 +42,6 @@ describe('The Event View', function() {
       expect(eventView.$el.find('span').text()).toContain('Sydney');
     });
 
-    it('should display event category', function () {
-      eventView.render();
-      expect(eventView.$el.find('span').text()).toContain('sport');
-    });
-
   });
 
 });

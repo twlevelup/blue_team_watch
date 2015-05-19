@@ -13,7 +13,9 @@ var EventsView = PageView.extend({
   buttonEvents: {
     right: '',
     face: '',
-    left: 'back'
+    left: 'goToCategoriesPage',
+    bottom: 'scrollDown',
+    top: 'scrollUp'
   },
 
   initialize: function() {
@@ -30,6 +32,8 @@ var EventsView = PageView.extend({
     this.eventsCollection.each(function(calendarEvent) {
       this.$el.find('#event-list').append(this.createEventHTML(calendarEvent));
     }, this);
+
+    this.$el.find('#event-category').text('All Categories');
 
     return this;
   },
@@ -49,6 +53,18 @@ var EventsView = PageView.extend({
       model: calendarEvent
     });
     return view.render().el;
+  },
+
+  goToCategoriesPage: function() {
+    global.App.router.navigate('categories', true);
+  },
+
+  scrollDown: function() {
+    $('#watch-face').animate({scrollTop: '+=70px'});
+  },
+
+  scrollUp: function() {
+    $('#watch-face').animate({scrollTop: '-=70px'});
   }
 
 });
