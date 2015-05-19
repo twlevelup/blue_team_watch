@@ -32,7 +32,15 @@ describe('The Categories Page', function() {
         categoriesPage.trigger('left');
         expect(categoriesPage.goToMainMenuPage).toHaveBeenCalled();
       });
+    });
 
+    describe('right', function () {
+      it('should take the user to the events page', function () {
+        spyOn(categoriesPage, 'goToEventsPage');
+        categoriesPage.setButtonEvents();
+        categoriesPage.trigger('right');
+        expect(categoriesPage.goToEventsPage).toHaveBeenCalled();
+      });
     });
 
   });
@@ -52,7 +60,7 @@ describe('The Categories Page', function() {
 
     it('should display a list of list items for categories', function () {
       categoriesPage.render();
-      expect(categoriesPage.$el.find('li').length).toEqual(3);
+      expect(categoriesPage.$el.find('li').length).toEqual(4);
     });
 
     it('returns the Categories view object', function() {

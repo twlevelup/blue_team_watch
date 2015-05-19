@@ -11,7 +11,12 @@ var CategoriesView = PageView.extend({
   template: require('../../templates/pages/categories.hbs'),
 
   buttonEvents: {
-    left: 'goToMainMenuPage'
+    left: 'goToMainMenuPage',
+    right: 'goToEventsPage'
+  },
+
+  goToEventsPage: function() {
+    global.App.router.navigate('eventsPage', true);
   },
 
   initialize: function() {
