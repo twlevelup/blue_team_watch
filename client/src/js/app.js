@@ -35,6 +35,11 @@ var App = {
       App.router.currentView.trigger('bottom');
     });
 
+    // Needs to be tested and set to a timeout.
+    // $('#button-left').on('dblclick', function() {
+    //   App.router.currentView.trigger('backToHome');
+    // });
+
     $('#button-left').click(function() {
       App.router.currentView.trigger('left');
     });

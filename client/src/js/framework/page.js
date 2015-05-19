@@ -12,6 +12,10 @@ var pageView = Backbone.View.extend({
 
   back: function() {
     history.back();
+  },
+
+  backToHome: function() {
+    global.App.router.navigate('home', true);
   }
 
 });
