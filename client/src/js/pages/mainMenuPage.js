@@ -10,7 +10,9 @@ var MainMenuView = PageView.extend({
 
   buttonEvents: {
     left: 'goToHomePage',
-    right: 'goToCategoriesPage'
+    right: 'goToCategoriesPage',
+    top: 'scrollUp',
+    bottom: 'scrollDown'
   },
 
   initialize: function() {
@@ -30,6 +32,14 @@ var MainMenuView = PageView.extend({
     this.$el.html(this.template());
 
     return this;
+  }, 
+    
+  scrollDown: function() {
+    Backbone.demoCursor();
+  },
+
+  scrollUp: function() {
+    Backbone.demoCursor(true);
   }
 
 }

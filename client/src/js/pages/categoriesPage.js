@@ -12,7 +12,9 @@ var CategoriesView = PageView.extend({
 
   buttonEvents: {
     left: 'goToMainMenuPage',
-    right: 'goToEventsPage'
+    right: 'goToEventsPage',
+    top: 'scrollUp',
+    bottom: 'scrollDown'
   },
 
   goToEventsPage: function() {
@@ -46,6 +48,14 @@ var CategoriesView = PageView.extend({
       this.$el.find('#categories-list').append('<li>'+categoriesArray[i]+'</li>');
     }
     return this;
+  },
+
+  scrollDown: function() {
+    Backbone.demoCursor();
+  },
+
+  scrollUp: function() {
+    Backbone.demoCursor(true);
   }
 
 }
