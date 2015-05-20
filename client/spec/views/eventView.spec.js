@@ -29,7 +29,7 @@ describe('The Event View', function() {
 
     it('should display event title', function () {
       eventView.render();
-      expect(eventView.$el.find('span').text()).toContain('Fishing');
+      expect(eventView.$el.find('div').text()).toContain('Fishing');
     });
 
     it('should display event date', function () {

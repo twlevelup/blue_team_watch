@@ -61,11 +61,11 @@ var EventsView = PageView.extend({
   },
 
   scrollDown: function() {
-    $('#watch-face').animate({scrollTop: '+=70px'});
+    $('#event-list').animate({scrollTop: '+=135px'});
   },
 
   scrollUp: function() {
-    $('#watch-face').animate({scrollTop: '-=70px'});
+    $('#event-list').animate({scrollTop: '-=135px'});
   }
 
 });

@@ -1,5 +1,37 @@
-#event-list li {
-  border: 1px solid gray;
-  background-color: lightgray;
+#event-list {
+  overflow: scroll;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 10px;
+  height: 165px;
+}
+
+.event-card {
+  margin-right: 5px;
   margin-bottom: 10px;
+  margin-left: 5px;
+  padding: 0 !important;
+  height: 135px;
+  border-radius: 2px;
+  background-color: $eventcard-bg;
+  box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.95);
+  .title {
+    padding: 10px;
+    width: calc(100% - 20px);
+    height: 33px;
+    background: $eventcard-header;
+    color: #fff;
+    font-size: x-large;
+    font-family: Oswald, helvetica, arial, sans-serif;
+  }
+  .details {
+    display: table-cell; // This is needed for vertical allign
+    padding: 10px;
+    width: 210px; // table cell doesn't fill horz so had to set manually
+    height: 62px;
+    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+  }
+  .date {}
+  .place {}
 }
