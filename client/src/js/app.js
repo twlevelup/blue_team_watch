@@ -23,6 +23,7 @@ var App = {
     this.watchFace = new WatchFace();
     this.notifications = new NotificationsPanel();
     this.notifications.configureNotifications(availableNotificationTypes);
+    this.backToHomeTimeout = {};
 
     // FIXME Make a view for the watch and make these regular view events
     // Don't trigger them on the router
@@ -68,12 +69,14 @@ var App = {
       }
     };
 
-    // Needs to be tested and set to a timeout.
-    // $('#button-left').on('dblclick', function() {
-    //   App.router.currentView.trigger('backToHome');
-    // });
+    $('#button-left').mousedown(function() {
+        App.backToHomeTimeout = setTimeout(function() {
+        App.router.navigate('', true);
+      },2000);
+    });
 
-    $('#button-left').click(function() {
+    $('#button-left').mouseup(function() {
+      clearTimeout(App.backToHomeTimeout);
       App.router.currentView.trigger('left');
     });
 
