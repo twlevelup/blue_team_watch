@@ -1,0 +1,179 @@
+diff --git a/.gitignore b/.gitignore
+index 00aace6..ca3ce23 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -14,6 +14,7 @@
+ # Node
+ node_modules/
+ .grunt/
++grunt/shell.js
+ 
+ # Project specific
+ 
+diff --git a/client/spec/pages/categoriesPage.spec.js b/client/spec/pages/categoriesPage.spec.js
+index ad348ba..d6fac30 100644
+--- a/client/spec/pages/categoriesPage.spec.js
++++ b/client/spec/pages/categoriesPage.spec.js
+@@ -16,10 +16,10 @@ describe('The Categories Page', function() {
+     categoriesPage = new CategoriesPage();
+     categoriesPage.eventsCollection = new CalendarEvents();
+     categoriesPage.eventsCollection.push([
+-      {category: "Food"},
+-      {category: "Hunt"},
+-      {category: "Water"},
+-      {category: "Food"}
++      {name: "Food Festival", category: "Food"},
++      {name: "Huntint Festival", category: "Hunt"},
++      {name: "Water Festival", category: "Water"},
++      {name: "Wine Festival", category: "Food"}
+     ]);
+   });
+ 
+@@ -76,14 +76,40 @@ describe('The Categories Page', function() {
+    
+   });
+ 
+-  describe('obtain event categories', function () {
++  describe('should expose selected category for events page', function () {
++
++    it('should expose Food as category', function () {
++      global.App.router.navigate = function (first, second) {};
++
++      categoriesPage.render();
++      categoriesPage.goToEventsPage(); 
++      expect(global.App.selectedCategory).toEqual('Food');  
+ 
+-    it('should fetch all unique categories from events', function () {
+-      var categories = ["Food", "Hunt", "Water"]; 
+-      expect(categoriesPage.getCategories()).toEqual(categories);
+     });
+-  });
+ 
+-  
++    // it('should expose Hunt as category after scroll down once', function () {
++    //   global.App.router.navigate = function (first, second) {};
++
++    //   categoriesPage.render();
++    //   categoriesPage.scrollDown();
++    //   categoriesPage.goToEventsPage(); 
++    //   expect(global.App.selectedCategory).toEqual('Hunt');  
++
++    // });
++
++    it('should expose Food as category after scroll up twice', function () {
++      global.App.router.navigate = function (first, second) {};
++
++      categoriesPage.render();
++      categoriesPage.scrollUp();
++      categoriesPage.scrollUp();
++      
++      categoriesPage.goToEventsPage(); 
++      expect(global.App.selectedCategory).toEqual('Food');  
++
++    });
++
++
++  });  
+ 
+ });
+diff --git a/client/spec/pages/eventsPage.spec.js b/client/spec/pages/eventsPage.spec.js
+index 8e20540..b76e049 100644
+--- a/client/spec/pages/eventsPage.spec.js
++++ b/client/spec/pages/eventsPage.spec.js
+@@ -18,9 +18,9 @@ describe('The Events Page', function() {
+     eventsPage = new EventsPage();
+     eventsPage.eventsCollection = new CalendarEvents();
+     eventsPage.eventsCollection.push([
+-      {date: "10/05/2015"},
+-      {date: "07/05/2015"},
+-      {date: "11/05/2015"}
++      {name: "Food Festival", category: "Food", date: "10/05/2015"},
++      {name: "Second Food Festival", category: "Food", date: "07/05/2015"},
++      {name: "Water Festival", category: "Water", date: "11/05/2015"}
+     ]);
+   });
+ 
+@@ -81,5 +81,16 @@ describe('The Events Page', function() {
+ 
+   });
+ 
++  describe('obtain events of a category', function () {
++
++    it('should fetch all events from a cetegory', function () {
++      var category = "Food";       
++
++      var filteredEvents = eventsPage.filterEvents(category); 
++      expect(filteredEvents.length).toEqual(2);
++      
++    });
++  });
++
+ 
+ });
+diff --git a/client/src/js/pages/categoriesPage.js b/client/src/js/pages/categoriesPage.js
+index 5a1f638..8f8c7a3 100644
+--- a/client/src/js/pages/categoriesPage.js
++++ b/client/src/js/pages/categoriesPage.js
+@@ -1,9 +1,8 @@
+ 'use strict';
+-
++var Appindex = 0;
+ var PageView = require('../framework/page'),
+     EventsCollection = require('../collections/calendarEvents'),
+     EventView = require('../views/event');
+-
+ var CategoriesView = PageView.extend({
+ 
+   id: 'categories',
+@@ -18,6 +17,7 @@ var CategoriesView = PageView.extend({
+   },
+ 
+   goToEventsPage: function() {
++    global.App.selectedCategory = "Food";
+     global.App.router.navigate('eventsPage', true);
+   },
+ 
+@@ -51,13 +51,19 @@ var CategoriesView = PageView.extend({
+ 
+     return this;
+   },
++  
++ 
+ 
+   scrollDown: function() {
+     Backbone.demoCursor();
++    Appindex += 1;
+   },
+ 
+   scrollUp: function() {
+     Backbone.demoCursor(true);
++    if(Appindex !== 0) {
++      Appindex -= 1; 
++    }
+   }
+ 
+ }
+diff --git a/client/src/js/pages/eventsPage.js b/client/src/js/pages/eventsPage.js
+index 8e37b86..bcd2ddc 100644
+--- a/client/src/js/pages/eventsPage.js
++++ b/client/src/js/pages/eventsPage.js
+@@ -8,6 +8,8 @@ var EventsView = PageView.extend({
+ 
+   id: 'events',
+ 
++  category: 'category',
++
+   template: require('../../templates/pages/events.hbs'),
+ 
+   buttonEvents: {
+@@ -57,6 +59,10 @@ var EventsView = PageView.extend({
+     return view.render().el;
+   },
+ 
++  filterEvents: function(category){
++    return this.eventsCollection.where({'category': category});
++  },
++
+   goToCategoriesPage: function() {
+     global.App.router.navigate('categories', true);
+   },

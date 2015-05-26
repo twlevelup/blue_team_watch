@@ -1,9 +1,8 @@
 'use strict';
-
+var Appindex = 0;
 var PageView = require('../framework/page'),
     EventsCollection = require('../collections/calendarEvents'),
     EventView = require('../views/event');
-
 var CategoriesView = PageView.extend({
 
   id: 'categories',
@@ -18,6 +17,7 @@ var CategoriesView = PageView.extend({
   },
 
   goToEventsPage: function() {
+    global.App.selectedCategory = 'Food';
     global.App.router.navigate('eventsPage', true);
   },
 
@@ -54,10 +54,14 @@ var CategoriesView = PageView.extend({
 
   scrollDown: function() {
     Backbone.demoCursor();
+    Appindex += 1;
   },
 
   scrollUp: function() {
     Backbone.demoCursor(true);
+    if (Appindex !== 0) {
+      Appindex -= 1;
+    }
   }
 
 }

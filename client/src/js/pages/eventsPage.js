@@ -8,6 +8,8 @@ var EventsView = PageView.extend({
 
   id: 'events',
 
+  category: 'category',
+
   template: require('../../templates/pages/events.hbs'),
 
   buttonEvents: {
@@ -55,6 +57,10 @@ var EventsView = PageView.extend({
       model: calendarEvent
     });
     return view.render().el;
+  },
+
+  filterEvents: function(category) {
+    return this.eventsCollection.where({category: category});
   },
 
   goToCategoriesPage: function() {

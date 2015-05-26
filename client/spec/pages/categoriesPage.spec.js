@@ -16,10 +16,10 @@ describe('The Categories Page', function() {
     categoriesPage = new CategoriesPage();
     categoriesPage.eventsCollection = new CalendarEvents();
     categoriesPage.eventsCollection.push([
-      {category: "Food"},
-      {category: "Hunt"},
-      {category: "Water"},
-      {category: "Food"}
+      {name: "Food Festival", category: "Food"},
+      {name: "Huntint Festival", category: "Hunt"},
+      {name: "Water Festival", category: "Water"},
+      {name: "Wine Festival", category: "Food"}
     ]);
   });
 
@@ -76,14 +76,40 @@ describe('The Categories Page', function() {
    
   });
 
-  describe('obtain event categories', function () {
+  describe('should expose selected category for events page', function () {
 
-    it('should fetch all unique categories from events', function () {
-      var categories = ["Food", "Hunt", "Water"]; 
-      expect(categoriesPage.getCategories()).toEqual(categories);
+    it('should expose Food as category', function () {
+      global.App.router.navigate = function (first, second) {};
+
+      categoriesPage.render();
+      categoriesPage.goToEventsPage(); 
+      expect(global.App.selectedCategory).toEqual('Food');  
+
     });
-  });
 
-  
+    // it('should expose Hunt as category after scroll down once', function () {
+    //   global.App.router.navigate = function (first, second) {};
+
+    //   categoriesPage.render();
+    //   categoriesPage.scrollDown();
+    //   categoriesPage.goToEventsPage(); 
+    //   expect(global.App.selectedCategory).toEqual('Hunt');  
+
+    // });
+
+    it('should expose Food as category after scroll up twice', function () {
+      global.App.router.navigate = function (first, second) {};
+
+      categoriesPage.render();
+      categoriesPage.scrollUp();
+      categoriesPage.scrollUp();
+      
+      categoriesPage.goToEventsPage(); 
+      expect(global.App.selectedCategory).toEqual('Food');  
+
+    });
+
+
+  });  
 
 });

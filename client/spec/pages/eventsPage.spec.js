@@ -18,9 +18,9 @@ describe('The Events Page', function() {
     eventsPage = new EventsPage();
     eventsPage.eventsCollection = new CalendarEvents();
     eventsPage.eventsCollection.push([
-      {date: "10/05/2015"},
-      {date: "07/05/2015"},
-      {date: "11/05/2015"}
+      {name: "Food Festival", category: "Food", date: "10/05/2015"},
+      {name: "Second Food Festival", category: "Food", date: "07/05/2015"},
+      {name: "Water Festival", category: "Water", date: "11/05/2015"}
     ]);
   });
 
@@ -79,6 +79,17 @@ describe('The Events Page', function() {
     });
 
 
+  });
+
+  describe('obtain events of a category', function () {
+
+    it('should fetch all events from a cetegory', function () {
+      var category = "Food";       
+
+      var filteredEvents = eventsPage.filterEvents(category); 
+      expect(filteredEvents.length).toEqual(2);
+      
+    });
   });
 
 

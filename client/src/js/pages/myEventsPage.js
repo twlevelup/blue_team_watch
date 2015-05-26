@@ -26,12 +26,13 @@ var MyEventsView = PageView.extend({
 
   render: function() {
     this.$el.html(this.template());
+
     // Limit to myEvents == true
     var myEvents = this.eventsCollection.where({myEvent: true});
     window.console.log(myEvents);
     window.console.log(myEvents.length);
 
-    for(var i = 0; i < myEvents.length; i += 1) {
+    for (var i = 0; i < myEvents.length; i += 1) {
       this.$el.find('#event-list').append(this.createEventHTML(myEvents[i]));
     }
 
