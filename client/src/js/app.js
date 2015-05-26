@@ -72,7 +72,7 @@ var App = {
     $('#button-left').mousedown(function() {
         App.backToHomeTimeout = setTimeout(function() {
         App.router.navigate('', true);
-      },2000);
+      },1300);
     });
 
     $('#button-left').mouseup(function() {
