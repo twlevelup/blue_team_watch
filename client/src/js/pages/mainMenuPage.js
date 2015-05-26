@@ -28,12 +28,10 @@ var MainMenuView = PageView.extend({
   },
 
   render: function() {
-
     this.$el.html(this.template());
-
     return this;
-  }, 
-    
+  },
+
   scrollDown: function() {
     Backbone.demoCursor();
   },

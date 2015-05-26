@@ -7,7 +7,10 @@ var Router = require('./router'),
   clock = require('./framework/clock');
 
 var App = {
-  navigate: function(route) {
+
+  buttons: ['left', 'right', 'top', 'bottom', 'face'],
+
+  navigate: function (route) {
     App.router.navigate(route, true);
   },
 

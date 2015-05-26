@@ -28,13 +28,14 @@ var CategoriesView = PageView.extend({
   },
 
   getCategories: function() {
-    var categoriesArray = []; 
+    var categoriesArray = [];
     this.eventsCollection.each(function(calendarEvent) {
-      if(!_.contains(categoriesArray, calendarEvent.attributes.category)){
-        categoriesArray.push(calendarEvent.attributes.category);        
-      } 
+      if (!_.contains(categoriesArray, calendarEvent.attributes.category)) {
+        categoriesArray.push(calendarEvent.attributes.category);
+      }
     }, this);
-    return categoriesArray;  
+
+    return categoriesArray;
   },
 
   goToMainMenuPage: function() {
@@ -44,9 +45,10 @@ var CategoriesView = PageView.extend({
   render: function() {
     this.$el.html(this.template());
     var categoriesArray = this.getCategories();
-    for (var i = 0; i < categoriesArray.length; i+=1) {
-      this.$el.find('#categories-list').append('<li>'+categoriesArray[i]+'</li>');
+    for (var i = 0; i < categoriesArray.length; i += 1) {
+      this.$el.find('#categories-list').append('<li>' + categoriesArray[i] + '</li>');
     }
+
     return this;
   },
 

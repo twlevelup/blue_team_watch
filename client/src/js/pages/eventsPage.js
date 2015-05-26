@@ -42,6 +42,7 @@ var EventsView = PageView.extend({
     this.eventsCollection.each(function(calendarEvent) {
       this.eventsCollection.remove(calendarEvent);
     }, this);
+
     this.eventsCollection.push([
         {name: 'Fishing', date: '10/05/2015', location: 'Darling Harbour', category: 'sport'},
         {name: 'Play guitar', date: '07/06/2015', location: 'Sydney', category: 'music'},
