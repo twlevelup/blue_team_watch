@@ -29,17 +29,17 @@ describe('The Event View', function() {
 
     it('should display event title', function () {
       eventView.render();
-      expect(eventView.$el.find('div').text()).toContain('Fishing');
+      expect(eventView.el.innerHTML).toContain('<div class="title">Fishing</div>');
     });
 
     it('should display event date', function () {
       eventView.render();
-      expect(eventView.$el.find('span').text()).toContain('22/04/2015');
+      expect(eventView.el.innerHTML).toContain('<span>22/04/2015</span>');
     });
 
     it('should display event location', function () {
       eventView.render();
-      expect(eventView.$el.find('span').text()).toContain('Sydney');
+      expect(eventView.el.innerHTML).toContain('<span>@ Sydney</span>');
     });
 
   });
