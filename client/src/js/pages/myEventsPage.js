@@ -4,7 +4,7 @@ var PageView = require('../framework/page'),
   EventsCollection = require('../collections/calendarEvents'),
   EventView = require('../views/event');
 
-var EventsView = PageView.extend({
+var MyEventsView = PageView.extend({
 
   id: 'events',
 
@@ -22,32 +22,26 @@ var EventsView = PageView.extend({
     var self = this;
     this.eventsCollection = new EventsCollection();
     this.listenTo(this.eventsCollection, 'change', this.render);
-
-    // Uncomment to seed DB
-    // this.seedEvents();
   },
 
   render: function() {
     this.$el.html(this.template());
-    this.eventsCollection.each(function(calendarEvent) {
-      this.$el.find('#event-list').append(this.createEventHTML(calendarEvent));
-    }, this);
+    // Limit to myEvents == true
+    var myEvents = this.eventsCollection.where({myEvent: true});
+    window.console.log(myEvents);
+    window.console.log(myEvents.length);
 
-    this.$el.find('#event-category').text('All Categories');
+    for(var i = 0; i < myEvents.length; i += 1) {
+      this.$el.find('#event-list').append(this.createEventHTML(myEvents[i]));
+    }
+
+    // myEvents.each(function(calendarEvent) {
+    //   this.$el.find('#event-list').append(this.createEventHTML(calendarEvent));
+    // }, this);
+
+    this.$el.find('#event-category').text('My Events');
 
     return this;
-  },
-
-  seedEvents: function() {
-    this.eventsCollection.each(function(calendarEvent) {
-      this.eventsCollection.remove(calendarEvent);
-    }, this);
-
-    this.eventsCollection.push([
-        {name: 'Fishing', date: '10/05/2015', location: 'Darling Harbour', category: 'sport'},
-        {name: 'Play guitar', date: '11/05/2015', location: 'Sydney', category: 'music'},
-        {name: 'Sky diving', date: '12/05/2015', location: 'Maitland', category: 'sport'}
-      ]);
   },
 
   createEventHTML: function(calendarEvent) {
@@ -71,4 +65,4 @@ var EventsView = PageView.extend({
 
 });
 
-module.exports = EventsView;
+module.exports = MyEventsView;
