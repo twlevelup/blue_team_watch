@@ -3,7 +3,8 @@ var CalendarEvent = Backbone.Model.extend({
     name: '',
     date: '',
     location: '',
-    category: ''
+    category: '',
+    myEvent: false
   }
 });
 
