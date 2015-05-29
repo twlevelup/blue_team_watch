@@ -27,13 +27,13 @@ describe('The Main Menu Page', function() {
     });
 
     describe('right', function () {
-      it('should take the user to the categories page', function () {
-        spyOn(mainMenuPage, 'goToCategoriesPage');
-        mainMenuPage.setButtonEvents();
-        mainMenuPage.trigger('right');
-        expect(mainMenuPage.goToCategoriesPage).toHaveBeenCalled();
-      });
-
+      it('should direct user to the correct page on right button event', 
+        function() {
+          spyOn(mainMenuPage, 'goToNextRightScreen'); 
+          mainMenuPage.setButtonEvents(); 
+          mainMenuPage.trigger('right'); 
+          expect(mainMenuPage.goToNextRightScreen).toHaveBeenCalled();    
+        }); 
     });
 
   });
@@ -42,12 +42,17 @@ describe('The Main Menu Page', function() {
 
     it('should produce the correct HTML', function () {
       mainMenuPage.render();
-      expect(mainMenuPage.el.innerHTML).toContain('>Main Menu</h1>');
+      expect(mainMenuPage.el.innerHTML).toContain('>Events</h1>');
     });
 
     it('should contain the events list option', function () {
       mainMenuPage.render();
-      expect(mainMenuPage.el.innerHTML).toContain('<li class="active">Events</li>');
+      expect(mainMenuPage.el.innerHTML).toContain('>Search Events</li>');
+    });
+
+    it('should contain the my events list option', function () {
+      mainMenuPage.render();
+      expect(mainMenuPage.el.innerHTML).toContain('>My Events</li>');
     });
 
     it('returns the view object', function() {

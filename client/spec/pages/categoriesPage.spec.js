@@ -1,3 +1,4 @@
+
 'use strict';
 
 var CategoriesPage = require('../../src/js/pages/categoriesPage'),
@@ -117,5 +118,4 @@ describe('The Categories Page', function() {
       expect(global.App.selectedCategory).toEqual('Music');
     });
   });  
-
 });
