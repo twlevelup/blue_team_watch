@@ -65,10 +65,10 @@ describe('The My Events Page', function() {
   describe('events', function() {
 
     it('should go back to the categories page', function() {
-      spyOn(myEventsPage, 'goToCategoriesPage');
+      spyOn(myEventsPage, 'goToMainMenuPage');
       myEventsPage.setButtonEvents();
       myEventsPage.trigger('left');
-      expect(myEventsPage.goToCategoriesPage).toHaveBeenCalled();
+      expect(myEventsPage.goToMainMenuPage).toHaveBeenCalled();
     });
 
     it('should scroll down', function() {

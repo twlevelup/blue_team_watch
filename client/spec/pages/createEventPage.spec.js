@@ -41,9 +41,10 @@ describe('create event', function() {
         createEventPage.eventsCollection = new CalendarEvents();
         createEventPage.trigger('right');
         var newEvent = createEventPage.eventsCollection.at(0);
-        expect(newEvent.get('name')).toEqual('Another exciting story');
         expect(newEvent.get('category')).toEqual('Story');
+        expect(newEvent.get('location')).toEqual('Fire Pit');
         expect(newEvent.get('date')).toEqual('10/05/2015');
+        expect(newEvent.get('time')).toEqual('7pm');
       });
 
     });
@@ -67,16 +68,20 @@ describe('create event', function() {
       expect(createEventPage.render()).toEqual(createEventPage);
     });
 
-    it('should display the name', function() {
-      expect(html).toContainText('Another exciting story');
-    });
-
     it('should display the category', function() {
       expect(html).toContainText('Story');
     });
 
     it('should display the date', function() {
       expect(html).toContainText('10/05/2015');
+    });
+
+    it('should display the location', function() {
+      expect(html).toContainText('Fire Pit');
+    });
+    
+    it('should display the time', function() {
+      expect(html).toContainText('7pm');
     });
 
   });

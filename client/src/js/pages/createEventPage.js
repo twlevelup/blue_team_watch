@@ -11,7 +11,9 @@ var CreateEventPage = Page.extend({
 
   buttonEvents: {
     right: 'saveCreatedEvent',
-    left: 'goToMainMenu'
+    left: 'goToMainMenu',
+    top: 'scrollUp',
+    bottom: 'scrollDown'
   },
 
   eventsCollection: new EventsCollection(),
@@ -21,8 +23,15 @@ var CreateEventPage = Page.extend({
   },
 
   saveCreatedEvent: function() {
-    var newEvent = {name: 'Another exciting story', category: 'Story', date: '10/05/2015'};
+    var newEvent = {category: 'Story', date: '10/05/2015', location: 'Fire Pit', time: '7pm'};
     this.eventsCollection.push(newEvent);
+  },
+  scrollUp: function() {
+    $('#watch-face').animate({scrollTop: '-=70px'});
+  },
+
+  scrollDown: function() {
+    $('#watch-face').animate({scrollTop: '+=70px'});
   },
 
   render: function() {

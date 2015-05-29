@@ -2,7 +2,8 @@
 
 var PageView = require('../framework/page'),
   EventsCollection = require('../collections/calendarEvents'),
-  EventView = require('../views/event');
+  EventView = require('../views/event'), 
+  myEvents = [];
 
 var MyEventsView = PageView.extend({
 
@@ -13,7 +14,7 @@ var MyEventsView = PageView.extend({
   buttonEvents: {
     right: '',
     face: '',
-    left: 'goToCategoriesPage',
+    left: 'goToMainMenuPage',
     bottom: 'scrollDown',
     top: 'scrollUp'
   },
@@ -28,11 +29,13 @@ var MyEventsView = PageView.extend({
     this.$el.html(this.template());
 
     // Limit to myEvents == true
-    var myEvents = this.eventsCollection.where({myEvent: true});
+    myEvents = this.eventsCollection.where({myEvent: true});
 
     for (var i = 0; i < myEvents.length; i += 1) {
       this.$el.find('#event-list').append(this.createEventHTML(myEvents[i]));
     }
+
+    this.$el.find('.event-card').first().addClass('active');
 
     this.$el.find('#event-category').text('My Events');
 
@@ -46,16 +49,30 @@ var MyEventsView = PageView.extend({
     return view.render().el;
   },
 
-  goToCategoriesPage: function() {
-    global.App.router.navigate('categories', true);
+  goToMainMenuPage: function() {
+    global.App.router.navigate('mainMenu', true);
   },
 
   scrollDown: function() {
-    $('#event-list').animate({scrollTop: '+=135px'});
+    if(parseInt($('li.active').index()) < myEvents.length - 1) {
+      $('#event-list').animate({scrollTop: '+=135px'});
+      var indexOfNextEventCard = parseInt($('li.active').index()) + 1;
+      this.toggleActiveEventCard(indexOfNextEventCard); 
+    }
   },
 
   scrollUp: function() {
-    $('#event-list').animate({scrollTop: '-=135px'});
+    if(parseInt($('li.active').index()) > 0) {
+      $('#event-list').animate({scrollTop: '-=135px'});
+      var indexOfNextEventCard = parseInt($('li.active').index()) - 1;
+      this.toggleActiveEventCard(indexOfNextEventCard);
+    }
+  }, 
+
+  toggleActiveEventCard: function(indexOfNextEventCard) {
+    $('li.active').removeClass('active'); 
+    var nextEventCard = this.$el.find('.event-card').eq(indexOfNextEventCard);
+    nextEventCard.addClass('active');  
   }
 
 });
