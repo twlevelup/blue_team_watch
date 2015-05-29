@@ -75,7 +75,7 @@ describe('The Categories Page', function() {
       expect(categoriesPage.render()).toEqual(categoriesPage);
     });
 
-    xit('should add active class to all categories', function () {
+    it('should add active class to all categories', function () {
       categoriesPage.render();
       expect(categoriesPage.el.innerHTML).toContain('<li class="active">All Categories</li>');
     });
