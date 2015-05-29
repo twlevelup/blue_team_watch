@@ -29,16 +29,10 @@ var MyEventsView = PageView.extend({
 
     // Limit to myEvents == true
     var myEvents = this.eventsCollection.where({myEvent: true});
-    window.console.log(myEvents);
-    window.console.log(myEvents.length);
 
     for (var i = 0; i < myEvents.length; i += 1) {
       this.$el.find('#event-list').append(this.createEventHTML(myEvents[i]));
     }
-
-    // myEvents.each(function(calendarEvent) {
-    //   this.$el.find('#event-list').append(this.createEventHTML(calendarEvent));
-    // }, this);
 
     this.$el.find('#event-category').text('My Events');
 

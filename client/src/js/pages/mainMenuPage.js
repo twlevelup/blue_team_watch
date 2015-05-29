@@ -10,7 +10,7 @@ var MainMenuView = PageView.extend({
 
   buttonEvents: {
     left: 'goToHomePage',
-    right: 'goToCategoriesPage',
+    right: 'goToNextRightScreen',
     top: 'scrollUp',
     bottom: 'scrollDown'
   },
@@ -27,6 +27,10 @@ var MainMenuView = PageView.extend({
     global.App.router.navigate('categories', true);
   },
 
+  goToMyEventsPage: function() {
+    global.App.router.navigate('myEvents', true); 
+  },
+
   render: function() {
     this.$el.html(this.template());
     return this;
@@ -38,6 +42,14 @@ var MainMenuView = PageView.extend({
 
   scrollUp: function() {
     Backbone.demoCursor(true);
+  }, 
+
+  goToNextRightScreen: function() {
+    if ($('#search-events').hasClass('active')) {
+      this.goToCategoriesPage(); 
+    } else {
+      this.goToMyEventsPage(); 
+    }
   }
 
 }
