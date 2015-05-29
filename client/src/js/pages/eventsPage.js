@@ -35,6 +35,8 @@ var EventsView = PageView.extend({
       this.$el.find('#event-list').append(this.createEventHTML(calendarEvent));
     }, this);
 
+    this.$el.find('.event-card').first().addClass('active');
+
     this.$el.find('#event-category').text('All Categories');
 
     return this;
@@ -68,11 +70,25 @@ var EventsView = PageView.extend({
   },
 
   scrollDown: function() {
-    $('#event-list').animate({scrollTop: '+=135px'});
+    if(parseInt($('li.active').index()) < this.eventsCollection.length - 1) {
+      $('#event-list').animate({scrollTop: '+=135px'});
+      var indexOfNextEventCard = parseInt($('li.active').index()) + 1;
+      this.toggleActiveEventCard(indexOfNextEventCard); 
+    }
   },
 
   scrollUp: function() {
-    $('#event-list').animate({scrollTop: '-=135px'});
+    if(parseInt($('li.active').index()) > 0) {
+      $('#event-list').animate({scrollTop: '-=135px'});
+      var indexOfNextEventCard = parseInt($('li.active').index()) - 1;
+      this.toggleActiveEventCard(indexOfNextEventCard);
+    }
+  }, 
+
+  toggleActiveEventCard: function(indexOfNextEventCard) {
+    $('li.active').removeClass('active'); 
+    var nextEventCard = this.$el.find('.event-card').eq(indexOfNextEventCard);
+    nextEventCard.addClass('active');  
   }
 
 });
