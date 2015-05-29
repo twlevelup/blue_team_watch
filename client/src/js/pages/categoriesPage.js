@@ -28,10 +28,10 @@ var CategoriesView = PageView.extend({
   },
 
   getCategories: function() {
-    var categoriesArray = [];
+    var categoriesArray = [{title: "All Categories", active: true}];
     this.eventsCollection.each(function(calendarEvent) {
       if (!_.contains(categoriesArray, calendarEvent.get('category'))) {
-        categoriesArray.push(calendarEvent.attributes.category);
+        categoriesArray.push({title: calendarEvent.attributes.category});
       }
     }, this);
 
