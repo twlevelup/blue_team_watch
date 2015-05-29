@@ -17,9 +17,9 @@ describe('The Categories Page', function() {
     categoriesPage.eventsCollection = new CalendarEvents();
     categoriesPage.eventsCollection.push([
       {name: "Food Festival", category: "Food"},
-      {name: "Huntint Festival", category: "Hunt"},
+      {name: "Hunting Festival", category: "Hunt"},
       {name: "Water Festival", category: "Water"},
-      {name: "Wine Festival", category: "Food"}
+      {name: "Music Festival", category: "Music"}
     ]);
   });
 
@@ -87,25 +87,40 @@ describe('The Categories Page', function() {
 
     });
 
-    // it('should expose Hunt as category after scroll down once', function () {
-    //   global.App.router.navigate = function (first, second) {};
-
-    //   categoriesPage.render();
-    //   categoriesPage.scrollDown();
-    //   categoriesPage.goToEventsPage(); 
-    //   expect(global.App.selectedCategory).toEqual('Hunt');  
-
-    // });
-
     it('should expose Food as category after scroll up twice', function () {
       global.App.router.navigate = function (first, second) {};
 
       categoriesPage.render();
       categoriesPage.scrollUp();
       categoriesPage.scrollUp();
-      
-      categoriesPage.goToEventsPage(); 
-      expect(global.App.selectedCategory).toEqual('Food');  
+
+      categoriesPage.goToEventsPage();
+      expect(global.App.selectedCategory).toEqual('Food');
+
+    });
+
+    it('should expose Hunt as category after scroll down once', function () {
+       global.App.router.navigate = function (first, second) {};
+
+       categoriesPage.render();
+       categoriesPage.scrollDown();
+       categoriesPage.goToEventsPage();
+       expect(global.App.selectedCategory).toEqual('Hunt');
+
+    });
+
+    it('should expose Music as category after scrolling down past the last category', function () {
+      global.App.router.navigate = function (first, second) {};
+
+      categoriesPage.render();
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
+
+      categoriesPage.goToEventsPage();
+      expect(global.App.selectedCategory).toEqual('Music');
 
     });
 

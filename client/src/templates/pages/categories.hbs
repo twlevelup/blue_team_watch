@@ -3,4 +3,7 @@
   <ul class="navigation-list" id="categories-list">
     <div class="cursor"></div>
     <li class="active">All Categories</li>
+    {{#each categories}}
+        <li>{{this}}</li>
+    {{/each}}
   </ul>

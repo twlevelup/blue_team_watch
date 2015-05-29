@@ -30,7 +30,7 @@ var CategoriesView = PageView.extend({
   getCategories: function() {
     var categoriesArray = [];
     this.eventsCollection.each(function(calendarEvent) {
-      if (!_.contains(categoriesArray, calendarEvent.attributes.category)) {
+      if (!_.contains(categoriesArray, calendarEvent.get('category'))) {
         categoriesArray.push(calendarEvent.attributes.category);
       }
     }, this);
@@ -43,12 +43,7 @@ var CategoriesView = PageView.extend({
   },
 
   render: function() {
-    this.$el.html(this.template());
-    var categoriesArray = this.getCategories();
-    for (var i = 0; i < categoriesArray.length; i += 1) {
-      this.$el.find('#categories-list').append('<li>' + categoriesArray[i] + '</li>');
-    }
-
+    this.$el.html(this.template({categories: this.getCategories()}));
     return this;
   },
 
