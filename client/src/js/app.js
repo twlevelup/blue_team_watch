@@ -39,36 +39,6 @@ var App = {
       App.router.currentView.trigger('bottom');
     });
 
-    // FIXME I'm sure the cursor code should be somewhere else, I'll grab a dev
-    // to help me with moving this.
-    Backbone.demoCursor = function(direction) {
-      var current = $('li.active'); // get current iten
-      var next = current.next('li'); // get next item
-      if (direction === true) {
-        next = current.prev('li'); // get previous item
-      }
-
-      if (current !== undefined && next.size() !== 0) {
-        current.removeClass('active');
-        $(next).addClass('active');
-        Backbone.updateCursor();
-      }
-    };
-
-    Backbone.updateCursor = function() {
-      console.log("Running update cursor.");
-      var cursor = $('.cursor'); // get cursor div
-      var current = $('.active'); // get current item
-      if (current !== undefined && cursor !== undefined) {
-        var topPosition = current.position().top;
-        cursor.animate({
-          top: topPosition
-        }, {
-          duration: 200
-        });
-      }
-    };
-
     $('#button-left').mousedown(function() {
         App.backToHomeTimeout = setTimeout(function() {
         App.router.navigate('', true);

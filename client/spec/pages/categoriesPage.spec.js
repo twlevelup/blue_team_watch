@@ -74,63 +74,48 @@ describe('The Categories Page', function() {
     it('returns the Categories view object', function() {
       expect(categoriesPage.render()).toEqual(categoriesPage);
     });
-
-    it('should add active class to all categories', function () {
-      categoriesPage.render();
-      expect(categoriesPage.el.innerHTML).toContain('<li class="active">All Categories</li>');
-    });
    
   });
 
-  describe('should expose selected category for events page', function () {
+  describe('should pass selected category to event page', function () {
+    beforeEach(function () {
+      global.App.router.navigate = function (first, second) {};
+      categoriesPage.render();
+    });
 
-    // it('should expose Food as category', function () {
-    //   global.App.router.navigate = function (first, second) {};
+    it('should pass All Categories', function () {
+      categoriesPage.goToEventsPage(); 
+      expect(global.App.selectedCategory).toEqual('All Categories');  
 
-    //   categoriesPage.render();
-    //   categoriesPage.goToEventsPage(); 
-    //   expect(global.App.selectedCategory).toEqual('Food');  
+    });
 
-    // });
+    it('should pass All Categories after scrolling up twice', function () {
+      categoriesPage.scrollUp();
+      categoriesPage.scrollUp();
 
-    // it('should expose Food as category after scroll up twice', function () {
-    //   global.App.router.navigate = function (first, second) {};
+      categoriesPage.goToEventsPage();
+      expect(global.App.selectedCategory).toEqual('All Categories');
 
-    //   categoriesPage.render();
-    //   categoriesPage.scrollUp();
-    //   categoriesPage.scrollUp();
+    });
 
-    //   categoriesPage.goToEventsPage();
-    //   expect(global.App.selectedCategory).toEqual('Food');
+    it('should pass Food after scrolling down once', function () {
+       categoriesPage.scrollDown();
+       categoriesPage.goToEventsPage();
+       expect(global.App.selectedCategory).toEqual('Food');
 
-    // });
+    });
 
-    // it('should expose Hunt as category after scroll down once', function () {
-    //    global.App.router.navigate = function (first, second) {};
+    it('should pass Music after scrolling down past the last category', function () {
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
+      categoriesPage.scrollDown();
 
-    //    categoriesPage.render();
-    //    categoriesPage.scrollDown();
-    //    categoriesPage.goToEventsPage();
-    //    expect(global.App.selectedCategory).toEqual('Hunt');
-
-    // });
-
-    // it('should expose Music as category after scrolling down past the last category', function () {
-    //   global.App.router.navigate = function (first, second) {};
-
-    //   categoriesPage.render();
-    //   categoriesPage.scrollDown();
-    //   categoriesPage.scrollDown();
-    //   categoriesPage.scrollDown();
-    //   categoriesPage.scrollDown();
-    //   categoriesPage.scrollDown();
-
-    //   categoriesPage.goToEventsPage();
-    //   expect(global.App.selectedCategory).toEqual('Music');
-
-    // });
-
-
+      categoriesPage.goToEventsPage();
+      expect(global.App.selectedCategory).toEqual('Music');
+    });
   });  
 
 });

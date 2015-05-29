@@ -16,7 +16,35 @@ var pageView = Backbone.View.extend({
 
   backToHome: function() {
     global.App.router.navigate('home', true);
-  }
+  },
+
+  scrollUpWithCursor: function() {
+    this.scrollWithCursor(true);
+  },
+
+  scrollDownWithCursor: function() {
+    this.scrollWithCursor(false);
+  },
+
+  scrollWithCursor: function(isUpDirection) {
+    var current = this.$el.find('li.active');
+    var next;
+    if (isUpDirection) {
+      next = current.prev('li');
+    } else {
+      next = current.next('li');
+    }
+
+    if (next.size() > 0) {
+      current.removeClass('active');
+      current = this.$el.find(next);
+      current.addClass('active');
+
+      var cursor = this.$el.find('.cursor');
+      var topPosition = current.position().top;
+      cursor.animate({top: topPosition}, {duration: 200});
+    }
+  },
 
 });
 
