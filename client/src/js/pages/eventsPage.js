@@ -13,7 +13,7 @@ var EventsView = PageView.extend({
   template: require('../../templates/pages/events.hbs'),
 
   buttonEvents: {
-    right: '',
+    right: 'addToMyEvents',
     face: '',
     left: 'goToCategoriesPage',
     bottom: 'scrollDown',
@@ -89,6 +89,10 @@ var EventsView = PageView.extend({
     $('li.active').removeClass('active'); 
     var nextEventCard = this.$el.find('.event-card').eq(indexOfNextEventCard);
     nextEventCard.addClass('active');  
+  },
+
+  addToMyEvents: function () {
+    this.eventsCollection.get(parseInt($('li.active').index())).set({myEvent: true});
   }
 
 });

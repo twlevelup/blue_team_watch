@@ -35,26 +35,6 @@ describe('The My Events Page', function() {
       expect(myEventsPage.$el.find('li').length).toEqual(2);
     });
 
-
-
-    // it('should render a list of event models', function() {
-    //   myEventsPage.render();
-    //   expect(myEventsPage.el.innerHTML).toContain('10/05/2015');
-    //   expect(myEventsPage.el.innerHTML).toContain('07/05/2015');
-    //   expect(myEventsPage.el.innerHTML).toContain('11/05/2015');
-    // });
-
-    // it('should display the events in sorted order', function() {
-    //     myEventsPage.render();
-
-    //     var dates = $('.date');
-    //     var dateDigits = dates.map(function(date) {
-    //       return date.innerText.match(/\d+/);
-    //     });
-
-    //     expect(dateDigits).toEqual(dateDigits.sort());
-    // });
-
     it('should display my events', function() {
       myEventsPage.render();
       expect(myEventsPage.$el.find('#event-category').text()).toEqual('My Events');
@@ -84,7 +64,6 @@ describe('The My Events Page', function() {
       myEventsPage.trigger('top');
       expect(myEventsPage.scrollUp).toHaveBeenCalled();
     });
-
 
   });
 

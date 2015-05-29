@@ -78,7 +78,12 @@ describe('The Events Page', function() {
       expect(eventsPage.scrollUp).toHaveBeenCalled();
     });
 
-
+    it('should add event to My Events', function() {
+      spyOn(eventsPage, 'addToMyEvents');
+      eventsPage.setButtonEvents();
+      eventsPage.trigger('right');
+      expect(eventsPage.addToMyEvents).toHaveBeenCalled();
+    });
   });
 
   describe('obtain events of a category', function () {
