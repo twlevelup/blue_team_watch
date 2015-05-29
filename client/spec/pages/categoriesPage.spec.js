@@ -1,3 +1,4 @@
+
 'use strict';
 
 var CategoriesPage = require('../../src/js/pages/categoriesPage'),
@@ -79,7 +80,7 @@ describe('The Categories Page', function() {
       categoriesPage.render();
       expect(categoriesPage.el.innerHTML).toContain('<li class="active">All Categories</li>');
     });
-   
+
   });
 
   describe('should expose selected category for events page', function () {
@@ -88,8 +89,8 @@ describe('The Categories Page', function() {
     //   global.App.router.navigate = function (first, second) {};
 
     //   categoriesPage.render();
-    //   categoriesPage.goToEventsPage(); 
-    //   expect(global.App.selectedCategory).toEqual('Food');  
+    //   categoriesPage.goToEventsPage();
+    //   expect(global.App.selectedCategory).toEqual('Food');
 
     // });
 
@@ -131,6 +132,6 @@ describe('The Categories Page', function() {
     // });
 
 
-  });  
+  });
 
 });

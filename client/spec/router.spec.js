@@ -5,6 +5,7 @@ var AppRouter = require('../src/js/router.js'),
   HomePage = require('../src/js/pages/homePage'),
   ContactPage = require('../src/js/pages/contactsPage'),
   CategoriesPage = require('../src/js/pages/categoriesPage'),
+  CreateEventPage = require('../src/js/pages/createEventPage'),
   MainMenuPage = require('../src/js/pages/mainMenuPage');
 
 describe('Application Router', function() {
@@ -39,6 +40,14 @@ describe('Application Router', function() {
         router.categories();
         var isCategoriesPage = router.renderView.calls.argsFor(0)[0] instanceof CategoriesPage;
         expect(isCategoriesPage).toBeTruthy();
+      });
+    });
+
+    describe('#createEvent', function() {
+      it('should load the create event page', function() {
+        router.createEventPage();
+        var isCreateEvent = router.renderView.calls.argsFor(0)[0] instanceof CreateEventPage;
+        expect(isCreateEvent).toBeTruthy();
       });
     });
 

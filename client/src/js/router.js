@@ -5,15 +5,16 @@ var Router = require('./framework/router.js'),
   ContactsPage = require('./pages/contactsPage'),
   CategoriesPage = require('./pages/categoriesPage'),
   MyEventsPage = require('./pages/MyEventsPage'),
+  CreateEvent = require('./pages/createEventPage'),
   homePage = new HomePage(),
   contactsPage = new ContactsPage(),
   categoriesPage = new CategoriesPage(),
   myEventsPage = new MyEventsPage(),
   MainMenuPage = require('./pages/mainMenuPage'),
   EventsPage = require('./pages/eventsPage'),
-  homePage = new HomePage(),
   mainMenuPage = new MainMenuPage(),
-  eventsPage = new EventsPage();
+  eventsPage = new EventsPage(),
+  createEventPage = new CreateEvent();
 
 
 var AppRouter = Router.extend({
@@ -24,7 +25,8 @@ var AppRouter = Router.extend({
     categories: 'categories',
     mainMenu: 'mainMenu',
     eventsPage: 'eventsPage',
-    myEvents: 'myEvents'
+    myEvents: 'myEvents',
+    createEvent: 'createEventPage'
   },
 
   home: function() {
@@ -49,6 +51,10 @@ var AppRouter = Router.extend({
 
   myEvents: function() {
     this.renderView(myEventsPage);
+  },
+
+  createEventPage: function() {
+    this.renderView(createEventPage);
   }
 
 });
