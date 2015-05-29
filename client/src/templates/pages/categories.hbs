@@ -3,6 +3,6 @@
   <ul class="navigation-list" id="categories-list">
     <div class="cursor"></div>
     {{#each categories}}
-        <li>{{title}}</li>
+        <li {{#if active}}class="active"{{/if}}>{{title}}</li>
     {{/each}}
   </ul>
