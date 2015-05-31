@@ -54,7 +54,7 @@ var MyEventsView = PageView.extend({
   },
 
   scrollDown: function() {
-    if(parseInt($('li.active').index()) < myEvents.length - 1) {
+    if (parseInt($('li.active').index()) < myEvents.length - 1) {
       $('#event-list').animate({scrollTop: '+=135px'});
       var indexOfNextEventCard = parseInt($('li.active').index()) + 1;
       this.toggleActiveEventCard(indexOfNextEventCard); 
@@ -62,7 +62,7 @@ var MyEventsView = PageView.extend({
   },
 
   scrollUp: function() {
-    if(parseInt($('li.active').index()) > 0) {
+    if (parseInt($('li.active').index()) > 0) {
       $('#event-list').animate({scrollTop: '-=135px'});
       var indexOfNextEventCard = parseInt($('li.active').index()) - 1;
       this.toggleActiveEventCard(indexOfNextEventCard);

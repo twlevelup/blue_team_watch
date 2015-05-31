@@ -27,9 +27,9 @@ describe('The Event View', function() {
 
   describe('rendering', function () {
 
-    it('should display event title', function () {
+    it('should display event category', function () {
       eventView.render();
-      expect(eventView.$el.find('div').text()).toContain('Fishing');
+      expect(eventView.$el.find('div').text()).toContain('sport');
     });
 
     it('should display event date', function () {

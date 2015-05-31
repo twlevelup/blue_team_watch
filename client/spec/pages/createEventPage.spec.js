@@ -37,15 +37,11 @@ describe('create event', function() {
         model: CalendarEvent
       });
 
-      it('should save the new event information', function () {
-        createEventPage.eventsCollection = new CalendarEvents();
-        createEventPage.trigger('right');
-        var newEvent = createEventPage.eventsCollection.at(0);
-        expect(newEvent.get('category')).toEqual('Story');
-        expect(newEvent.get('location')).toEqual('Fire Pit');
-        expect(newEvent.get('date')).toEqual('10/05/2015');
-        expect(newEvent.get('time')).toEqual('7pm');
-      });
+      // it('should prompt the user to the next screen for creating an event', function () {
+      //   spyOn(createEventPage, 'nextStepOfCreateEvent');
+      //   createEventPage.trigger('right');
+      //   expect(createEventPage.nextStepOfCreateEvent).toHaveBeenCalled();
+      // });
 
     });
 
@@ -61,27 +57,11 @@ describe('create event', function() {
     });
 
     it('should produce the correct HTML', function () {
-      expect(html).toContainText('create event');
+      expect(html).toContainText('Create Event');
     });
 
     it('returns the view object', function() {
       expect(createEventPage.render()).toEqual(createEventPage);
-    });
-
-    it('should display the category', function() {
-      expect(html).toContainText('Story');
-    });
-
-    it('should display the date', function() {
-      expect(html).toContainText('10/05/2015');
-    });
-
-    it('should display the location', function() {
-      expect(html).toContainText('Fire Pit');
-    });
-    
-    it('should display the time', function() {
-      expect(html).toContainText('7pm');
     });
 
   });
