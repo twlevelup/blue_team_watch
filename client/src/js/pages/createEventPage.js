@@ -56,18 +56,14 @@ var CreateEventPage = Page.extend({
 
       var newEvent = {
         category: this.newEventAttribute[0],
-        date: this.newEventAttribute[1],
-        location: this.newEventAttribute[2],
+        date: this.newEventAttribute[2],
+        location: this.newEventAttribute[1],
         time: this.newEventAttribute[3]
       };
       this.eventsCollection.push(newEvent);
-      this.newEventAttribute.push('event created');
-    }
-
-    // FIXME: this should prompt the user back to the homePage. Not working at the moment
-    else if (this.newEventAttribute.length === 5) {
       this.newEventAttribute = [];
       global.App.router.navigate('', true);
+
     }
     else {
       var currentAttribute = this.$('.active').html();
