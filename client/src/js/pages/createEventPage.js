@@ -1,5 +1,5 @@
 'use strict';
-var Appindex = 0;
+
 var Page = require('../framework/page'),
   EventsCollection = require('../collections/calendarEvents');
 
@@ -77,11 +77,11 @@ var CreateEventPage = Page.extend({
   },
 
   scrollDown: function() {
-    Backbone.demoCursor();
+    this.scrollDownWithCursor();
   },
 
   scrollUp: function() {
-    Backbone.demoCursor(true);
+    this.scrollUpWithCursor();
   },
 
   render: function() {

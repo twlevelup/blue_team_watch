@@ -29,11 +29,11 @@ var MainMenuView = PageView.extend({
   },
 
   scrollDown: function() {
-    Backbone.demoCursor();
+    this.scrollDownWithCursor();
   },
 
   scrollUp: function() {
-    Backbone.demoCursor(true);
+    this.scrollUpWithCursor();
   },
 
   goToNextRightScreen: function() {
