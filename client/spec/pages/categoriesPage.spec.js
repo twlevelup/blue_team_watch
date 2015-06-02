@@ -87,7 +87,6 @@ describe('The Categories Page', function() {
     it('should pass All Categories', function () {
       categoriesPage.goToEventsPage(); 
       expect(global.App.selectedCategory).toEqual('All Categories');  
-
     });
 
     it('should pass All Categories after scrolling up twice', function () {

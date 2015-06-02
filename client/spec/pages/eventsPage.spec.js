@@ -25,34 +25,55 @@ describe('The Events Page', function() {
   });
 
   describe('rendering', function () {
+    describe('Food category selected', function () {
+      beforeEach(function () {
+        global.App.selectedCategory = "Food";
+      });
 
-    it('returns the event view object', function() {
-      expect(eventsPage.render()).toEqual(eventsPage);
-    });
-
-    it('should render a list of event models', function() {
-      eventsPage.render();
-      expect(eventsPage.el.innerHTML).toContain('10/05/2015');
-      expect(eventsPage.el.innerHTML).toContain('07/05/2015');
-      expect(eventsPage.el.innerHTML).toContain('11/05/2015');
-    });
-
-    it('should display the events in sorted order', function() {
+      it('should display the event category', function() {
         eventsPage.render();
+        expect(eventsPage.$el.find('#event-category').text()).toEqual('Food');
+      });
 
-        var dates = $('.date');
-        var dateDigits = dates.map(function(date) {
-          return date.innerText.match(/\d+/);
-        });
-
-        expect(dateDigits).toEqual(dateDigits.sort());
+      it('should render a list of event models', function() {
+        eventsPage.render();
+        expect(eventsPage.el.innerHTML).toContain('10/05/2015');
+        expect(eventsPage.el.innerHTML).toContain('07/05/2015');
+      });
     });
 
-    it('should display the event category', function() {
-      eventsPage.render();
-      expect(eventsPage.$el.find('#event-category').text()).toEqual('All Categories');
-    });
+    describe('All Categories selected', function () {
+      beforeEach(function () {
+        global.App.selectedCategory = "All Categories";
+      });
 
+      it('returns the event view object', function() {
+        expect(eventsPage.render()).toEqual(eventsPage);
+      });
+
+      it('should render a list of event models', function() {
+        eventsPage.render();
+        expect(eventsPage.el.innerHTML).toContain('10/05/2015');
+        expect(eventsPage.el.innerHTML).toContain('07/05/2015');
+        expect(eventsPage.el.innerHTML).toContain('11/05/2015');
+      });
+
+      it('should display the events in sorted order', function() {
+          eventsPage.render();
+
+          var dates = $('.date');
+          var dateDigits = dates.map(function(date) {
+            return date.innerText.match(/\d+/);
+          });
+
+          expect(dateDigits).toEqual(dateDigits.sort());
+      });
+
+      it('should display the event category', function() {
+        eventsPage.render();
+        expect(eventsPage.$el.find('#event-category').text()).toEqual('All Categories');
+      });
+    });
   });
 
   describe('events', function() {
@@ -85,17 +106,4 @@ describe('The Events Page', function() {
       expect(eventsPage.addToMyEvents).toHaveBeenCalled();
     });
   });
-
-  describe('obtain events of a category', function () {
-
-    it('should fetch all events from a cetegory', function () {
-      var category = "Food";       
-
-      var filteredEvents = eventsPage.filterEvents(category); 
-      expect(filteredEvents.length).toEqual(2);
-      
-    });
-  });
-
-
 });

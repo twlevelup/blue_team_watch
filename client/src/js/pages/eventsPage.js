@@ -31,13 +31,13 @@ var EventsView = PageView.extend({
 
   render: function() {
     this.$el.html(this.template());
-    this.eventsCollection.each(function(calendarEvent) {
+    this.filterEvents(global.App.selectedCategory).forEach(function (calendarEvent) {
       this.$el.find('#event-list').append(this.createEventHTML(calendarEvent));
     }, this);
 
     this.$el.find('.event-card').first().addClass('active');
 
-    this.$el.find('#event-category').text('All Categories');
+    this.$el.find('#event-category').text(global.App.selectedCategory);
 
     return this;
   },
@@ -61,8 +61,12 @@ var EventsView = PageView.extend({
     return view.render().el;
   },
 
-  filterEvents: function(category) {
-    return this.eventsCollection.where({category: category});
+  filterEvents: function(selectedCategory) {
+    if (selectedCategory === "All Categories") {
+      return this.eventsCollection.models;
+    } else {
+      return this.eventsCollection.where({category: selectedCategory});
+    }
   },
 
   goToCategoriesPage: function() {
