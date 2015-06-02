@@ -19,8 +19,8 @@ describe('The Categories Page', function() {
     categoriesPage.eventsCollection.push([
       {name: "Food Festival", category: "Food"},
       {name: "Hunting Festival", category: "Hunt"},
-      {name: "Water Festival", category: "Water"},
-      {name: "Music Festival", category: "Music"}
+      {name: "Music Festival", category: "MusicCategory"},
+      {name: "Second Music Festival", category: "MusicCategory"}
     ]);
   });
 
@@ -57,19 +57,19 @@ describe('The Categories Page', function() {
       expect(categoriesPage.render()).toEqual(categoriesPage);
     });
 
-    it('should display all categories including "all categories"', function () {
+    it('should display two music categories', function () {
       categoriesPage.render();
-      expect(categoriesPage.$el.find('li').length).toEqual(5);
+      expect(categoriesPage.$el.find('li').text().split("MusicCategory").length - 1).toEqual(1);
     });
 
     it('should display all categories including "all categories"', function () {
       categoriesPage.render();
-      expect(categoriesPage.$el.find('li').length).toEqual(5);
+      expect(categoriesPage.$el.find('li').length).toEqual(4);
     });
 
-    it('should add active to all categories', function () {
+    it('should add active', function () {
       categoriesPage.render();
-      expect(categoriesPage.$el.find('li').length).toEqual(5);
+      expect(categoriesPage.$el.find('.active').length).toEqual(1);
     });
 
     it('returns the Categories view object', function() {
@@ -114,7 +114,7 @@ describe('The Categories Page', function() {
       categoriesPage.scrollDown();
 
       categoriesPage.goToEventsPage();
-      expect(global.App.selectedCategory).toEqual('Music');
+      expect(global.App.selectedCategory).toEqual('MusicCategory');
     });
   });  
 });

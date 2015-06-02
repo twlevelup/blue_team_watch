@@ -29,8 +29,8 @@ var CategoriesView = PageView.extend({
   getCategories: function() {
     var categoriesArray = [{title: 'All Categories', active: true}];
     this.eventsCollection.each(function(calendarEvent) {
-      if (!_.contains(categoriesArray, calendarEvent.get('category'))) {
-        categoriesArray.push({title: calendarEvent.attributes.category});
+      if (_.where(categoriesArray, {title: calendarEvent.get('category')}).length - 1 === -1) {
+        categoriesArray.push({title: calendarEvent.get('category')});
       }
     }, this);
 
@@ -47,10 +47,12 @@ var CategoriesView = PageView.extend({
   },
 
   scrollDown: function() {
+    $('#watch-face').animate({scrollTop: '+=30px'});
     this.scrollDownWithCursor();
   },
 
   scrollUp: function() {
+    $('#watch-face').animate({scrollTop: '-=30px'});
     this.scrollUpWithCursor();
   }
 }
