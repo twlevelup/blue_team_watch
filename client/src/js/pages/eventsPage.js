@@ -31,7 +31,7 @@ var EventsView = PageView.extend({
 
   render: function() {
     this.$el.html(this.template());
-    this.filterEvents(global.App.selectedCategory).forEach(function (calendarEvent) {
+    this.filterEvents(global.App.selectedCategory).forEach(function(calendarEvent) {
       this.$el.find('#event-list').append(this.createEventHTML(calendarEvent));
     }, this);
 
@@ -62,7 +62,7 @@ var EventsView = PageView.extend({
   },
 
   filterEvents: function(selectedCategory) {
-    if (selectedCategory === "All Categories") {
+    if (selectedCategory === 'All Categories') {
       return this.eventsCollection.models;
     } else {
       return this.eventsCollection.where({category: selectedCategory});
@@ -96,7 +96,7 @@ var EventsView = PageView.extend({
   },
 
   addToMyEvents: function() {
-    this.eventsCollection.at(parseInt($('li.active').index())).set({myEvent: true});
+    this.filterEvents(global.App.selectedCategory)[parseInt($('li.active').index())].set({myEvent: true});
     $('li.active .details').append('<br><small>Event added to my events</small>');
   }
 
