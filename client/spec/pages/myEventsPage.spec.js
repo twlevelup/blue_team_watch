@@ -20,7 +20,7 @@ describe('The My Events Page', function() {
     myEventsPage.eventsCollection.push([
       {date: "10/05/2015", myEvent: true},
       {date: "07/05/2015", myEvent: true},
-      {date: "11/05/2015"}
+      {date: "11/05/2015", myEvent: false}
     ]);
   });
 

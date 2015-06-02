@@ -18,9 +18,9 @@ describe('The Events Page', function() {
     eventsPage = new EventsPage();
     eventsPage.eventsCollection = new CalendarEvents();
     eventsPage.eventsCollection.push([
-      {name: "Food Festival", category: "Food", date: "10/05/2015"},
-      {name: "Second Food Festival", category: "Food", date: "07/05/2015"},
-      {name: "Water Festival", category: "Water", date: "11/05/2015"}
+      {name: "Food Festival", category: "Food", date: "10/05/2015", myEvent: false},
+      {name: "Second Food Festival", category: "Food", date: "07/05/2015", myEvent: false},
+      {name: "Water Festival", category: "Water", date: "11/05/2015", myEvent: true}
     ]);
   });
 
@@ -105,5 +105,20 @@ describe('The Events Page', function() {
       eventsPage.trigger('right');
       expect(eventsPage.addToMyEvents).toHaveBeenCalled();
     });
+  });
+
+  describe('my events', function(){
+
+    it('should be able to set event as my event', function() {
+      spyOn($.fn, "index").and.returnValue(0);
+      expect(eventsPage.eventsCollection.at(0).attributes.myEvent).toEqual(false);
+      eventsPage.addToMyEvents();
+      expect(eventsPage.eventsCollection.at(0).attributes.myEvent).toEqual(true);
+    });
+
+    it('should not set event as my event if not added', function() {
+      expect(eventsPage.eventsCollection.at(1).attributes.myEvent).toEqual(false);
+    });
+
   });
 });

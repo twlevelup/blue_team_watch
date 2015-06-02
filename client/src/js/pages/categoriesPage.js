@@ -16,7 +16,7 @@ var CategoriesView = PageView.extend({
   },
 
   goToEventsPage: function() {
-    global.App.selectedCategory = this.$el.find(".active").text();
+    global.App.selectedCategory = this.$el.find('.active').text();
     global.App.router.navigate('eventsPage', true);
   },
 

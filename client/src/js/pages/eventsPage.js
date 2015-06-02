@@ -77,7 +77,7 @@ var EventsView = PageView.extend({
     if (parseInt($('li.active').index()) < this.eventsCollection.length - 1) {
       $('#event-list').animate({scrollTop: '+=135px'});
       var indexOfNextEventCard = parseInt($('li.active').index()) + 1;
-      this.toggleActiveEventCard(indexOfNextEventCard); 
+      this.toggleActiveEventCard(indexOfNextEventCard);
     }
   },
 
@@ -87,16 +87,17 @@ var EventsView = PageView.extend({
       var indexOfNextEventCard = parseInt($('li.active').index()) - 1;
       this.toggleActiveEventCard(indexOfNextEventCard);
     }
-  }, 
-
-  toggleActiveEventCard: function(indexOfNextEventCard) {
-    $('li.active').removeClass('active'); 
-    var nextEventCard = this.$el.find('.event-card').eq(indexOfNextEventCard);
-    nextEventCard.addClass('active');  
   },
 
-  addToMyEvents: function () {
-    this.eventsCollection.get(parseInt($('li.active').index())).set({myEvent: true});
+  toggleActiveEventCard: function(indexOfNextEventCard) {
+    $('li.active').removeClass('active');
+    var nextEventCard = this.$el.find('.event-card').eq(indexOfNextEventCard);
+    nextEventCard.addClass('active');
+  },
+
+  addToMyEvents: function() {
+    this.eventsCollection.at(parseInt($('li.active').index())).set({myEvent: true});
+    $('li.active .details').append('<br><small>Event added to my events</small>');
   }
 
 });

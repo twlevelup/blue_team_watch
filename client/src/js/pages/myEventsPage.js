@@ -2,7 +2,7 @@
 
 var PageView = require('../framework/page'),
   EventsCollection = require('../collections/calendarEvents'),
-  EventView = require('../views/event'), 
+  EventView = require('../views/event'),
   myEvents = [];
 
 var MyEventsView = PageView.extend({
@@ -57,7 +57,7 @@ var MyEventsView = PageView.extend({
     if (parseInt($('li.active').index()) < myEvents.length - 1) {
       $('#event-list').animate({scrollTop: '+=135px'});
       var indexOfNextEventCard = parseInt($('li.active').index()) + 1;
-      this.toggleActiveEventCard(indexOfNextEventCard); 
+      this.toggleActiveEventCard(indexOfNextEventCard);
     }
   },
 
@@ -67,12 +67,12 @@ var MyEventsView = PageView.extend({
       var indexOfNextEventCard = parseInt($('li.active').index()) - 1;
       this.toggleActiveEventCard(indexOfNextEventCard);
     }
-  }, 
+  },
 
   toggleActiveEventCard: function(indexOfNextEventCard) {
-    $('li.active').removeClass('active'); 
+    $('li.active').removeClass('active');
     var nextEventCard = this.$el.find('.event-card').eq(indexOfNextEventCard);
-    nextEventCard.addClass('active');  
+    nextEventCard.addClass('active');
   }
 
 });

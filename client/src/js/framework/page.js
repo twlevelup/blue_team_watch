@@ -44,7 +44,7 @@ var pageView = Backbone.View.extend({
       var topPosition = current.position().top;
       cursor.animate({top: topPosition}, {duration: 200});
     }
-  },
+  }
 
 });
 
