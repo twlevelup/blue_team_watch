@@ -19,7 +19,7 @@ var CreateEventPage = Page.extend({
   // FIXME: due to time constarints I declared the following lists as arrays,
   //        but they should really be declared as collections.
   eventCategories: ['Art', 'Music', 'Food', 'Story', 'Sport', 'Games'],
-  eventLocations: ['Fire Pit', 'The Rocks', 'Bondi Beach', 'Newtown', 'Surry Hills'],
+  eventLocations: ['Fire Pit', 'Water Hole', 'Big Rock', 'Village Hall'],
   eventDates: [],
   eventTime: ['6am', '8am', '10am', '12am', '2pm', '4pm', '6pm', '8pm'],
 
