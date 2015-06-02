@@ -73,10 +73,12 @@ var CreateEventPage = Page.extend({
   },
 
   scrollDown: function() {
+    $('#watch-face').animate({scrollTop: '+=30px'});
     this.scrollDownWithCursor();
   },
 
   scrollUp: function() {
+    $('#watch-face').animate({scrollTop: '-=30px'});
     this.scrollUpWithCursor();
   },
 
